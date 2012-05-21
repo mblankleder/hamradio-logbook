@@ -1,0 +1,28 @@
+CREATE TABLE `qso` (
+  `id` int(11) NOT NULL auto_increment,
+  `indicativo` varchar(15) NOT NULL default '',
+  `operador` varchar(20) default '',
+  `ubicacion` varchar(30) default NULL,
+  `fecha_hora` datetime default NULL,
+  `modo` varchar(5) NOT NULL default '',
+  `banda` varchar(10) NOT NULL default '',
+  `frecuencia` varchar(15) NOT NULL default '',
+  `rst_rx` varchar(5) default '',
+  `rst_tx` varchar(5) default '',
+  `qsl_env` tinyint(1) default '0',
+  `qsl_rec` tinyint(1) default '0',
+  `qsl_info` varchar(100) default '',
+  `comentarios` varchar(200) default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+
+CREATE TABLE `users` (
+  `user_id` int(11) NOT NULL auto_increment,
+  `username` varchar(11) NOT NULL default '',
+  `password` varchar(32) NOT NULL default '',
+  PRIMARY KEY  (`user_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+CREATE table modo (id int(11) NOT NULL auto_increment, modo varchar(15) NOT NULL default '', PRIMARY KEY (id)) TYPE=MyISAM;
+
+CREATE table users (user_id int(11) NOT NULL auto_increment, username varchar(11) NOT NULL default '', password varchar(32) NOT NULL default '', PRIMARY KEY (user_id)) TYPE=MyISAM;
