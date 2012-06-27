@@ -1,42 +1,42 @@
 body {
-	background-color: white;
+    background-color: white;
 }
 
-body.login{
-	background-color: #859DB2;
-}
 h1 {
-        font-family: sans-serif;
-        font-weight: bolder;
-        color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: black;
 }
 
 h2, h3 {
-        font-family: sans-serif;
-        font-weight: normal;
-        color: black;
+    font-family: sans-serif;
+    font-weight: normal;
+    color: black;
 }
 
-#a {
-#        text-decoration: none;
-#        color: blue;
-#}
-#
-#a:hover {
-#        text-decoration: none;
-#        color: red;
-#}
-
 table {
-	font-family: sans-serif;
-	font-size: 11px;
+    font-family: sans-serif;
+    font-size: 11px;
 }
 
 tr.cabezal {
-        font-family : Verdana, Arial, sans-serif ;
-        text-align: center;
-        color: white;
-        background-color : #306898;
-        font-weight : bold;
+    font-family : Verdana, Arial, sans-serif ;
+    text-align: center;
+    color: white;
+    background-color : #306898;
+    font-weight : bold;
 }
 
+fieldset {
+    padding: 1em;
+    font:80%/1 sans-serif;
+}
+
+label {
+    float:left;
+    width:25%;
+    margin-right:0.5em;
+    padding-top:0.2em;
+    text-align:right;
+    font-weight:bold;
+}
