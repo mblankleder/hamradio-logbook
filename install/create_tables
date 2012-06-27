@@ -14,15 +14,16 @@ CREATE TABLE `qso` (
   `qsl_info` varchar(100) default '',
   `comentarios` varchar(200) default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=34 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL auto_increment,
   `username` varchar(11) NOT NULL default '',
   `password` varchar(32) NOT NULL default '',
   PRIMARY KEY  (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 CREATE table modo (id int(11) NOT NULL auto_increment, modo varchar(15) NOT NULL default '', PRIMARY KEY (id)) TYPE=MyISAM;
 
-CREATE table users (user_id int(11) NOT NULL auto_increment, username varchar(11) NOT NULL default '', password varchar(32) NOT NULL default '', PRIMARY KEY (user_id)) TYPE=MyISAM;
+# change the username and the password
+INSERT INTO users VALUES (NULL,'username',MD5('yourpassword') );
