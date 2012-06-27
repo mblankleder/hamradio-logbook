@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>CX6CAU Logbook</title>
+<title><? print $callsign ?> Logbook</title>
 </head>
 <body>
 

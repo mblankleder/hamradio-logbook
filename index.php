@@ -1,5 +1,6 @@
 <?php
 include 'db.php';
+require 'owner_config.php';
 ?>
 
 <html>
@@ -64,10 +65,10 @@ table a:active{
 table.center {margin-left:auto; margin-right:auto;}
 </style>
 <link href="style.css" rel="stylesheet" type="text/css" />
-<title>CX6CAU Logbook - Login</title>
+<title><? print $callsign ?> Logbook - Login</title>
 </head>
 <center>
-<h1>CX6CAU Logbook - Login</h1>
+<h1><? print $callsign ?> Logbook - Login</h1>
 </center>
 <hr>
 <body class=login>
@@ -94,6 +95,9 @@ table.center {margin-left:auto; margin-right:auto;}
 </body>
 </html>
 <?
+if (!isset($_POST['palabra']))  {
+        $_POST['palabra'] = ""; 
+}
 if($_POST['palabra'] == "") {
         echo "<div align=center>Enter a callsign to start the search</div>";
 }else{

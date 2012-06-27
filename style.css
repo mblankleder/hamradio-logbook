@@ -39,17 +39,4 @@ tr.cabezal {
         background-color : #306898;
         font-weight : bold;
 }
-.rbroundbox { background: url(img/nt.gif) repeat; }
-.rbtop div { background: url(img/tl.gif) no-repeat top left; }
-.rbtop { background: url(img/tr.gif) no-repeat top right; }
-.rbbot div { background: url(img/bl.gif) no-repeat bottom left; }
-.rbbot { background: url(img/br.gif) no-repeat bottom right; }
-
-.rbtop div, .rbtop, .rbbot div, .rbbot {
-width: 100%;
-height: 30px;
-font-size: 1px;
-}
-.rbcontent { margin: 0 10px; }
-.rbroundbox { width: 50%; margin: 20px auto; }
 

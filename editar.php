@@ -1,6 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['username'])) {
+    require 'owner_config.php';
     include "db.php";
     $id=$_GET["id"];
     $sql = mysql_query("SELECT id,indicativo, operador, ubicacion, DATE_FORMAT(fecha_hora , '%Y-%m-%d') as fecha, DATE_FORMAT(fecha_hora , '%H:%i:%s') as hora, modo, banda, frecuencia, rst_rx, rst_tx, qsl_env, qsl_rec, qsl_info, comentarios FROM qso where id= $id");
@@ -10,7 +11,7 @@ if (isset($_SESSION['username'])) {
     <head>
         <link rel="shortcut icon" href="http://cx6cau.urugate.com/favicon.ico" />
         <link href="style.css" rel="stylesheet" type="text/css" />
-        <title>CX6CAU Logbook</title>
+        <title><? print $callsign ?> Logbook</title>
     <h1 style="text-align:center">Modificar contacto
     </head>
     <hr>

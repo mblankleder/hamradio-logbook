@@ -2,6 +2,7 @@
 session_start();
 // chequeo para estar seguro de que la variable de sesion esta registrada
 if (isset($_SESSION['username'])) {
+    require 'owner_config.php';
 // la variable de sesion esta registrada, el usuario tiene permiso para ver todo lo que sigue
 
     date_default_timezone_set('UTC');
@@ -29,8 +30,8 @@ if (isset($_SESSION['username'])) {
     <head>
         <link rel="shortcut icon" href="http://cx6cau.urugate.com/favicon.ico" />
         <link href="style.css" rel="stylesheet" type="text/css" />
-        <title>CX6CAU Logbook</title>
-    <h1 style="text-align:center">CX6CAU Logbook
+        <title><? print $callsign ?> Logbook</title>
+        <h1 style="text-align:center"><? print $callsign ?> Logbook</h1>
     </head>
 </head>
 <body>
