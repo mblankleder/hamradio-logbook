@@ -13,6 +13,7 @@ Install
 1 - Create the database:
 mysql> create database logbook;
 
-2 - Create the tables using the "create_tables" script under the install directory
+2 - Create the tables using the "create_tables" script under the install directory.
 
-3 - Configure the db.php file according with your settings
+3 - Configure the db.php and owner_config.php files according with your needs.
+ 
