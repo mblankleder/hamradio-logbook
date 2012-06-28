@@ -2,11 +2,10 @@
 session_start();
 // chequeo para estar seguro de que la variable de sesion esta registrada
 if (isset($_SESSION['username'])) {
-    require 'owner_config.php';
+    require 'config.php';
 // la variable de sesion esta registrada, el usuario tiene permiso para ver todo lo que sigue
 
     date_default_timezone_set('UTC');
-
 
     $hoy = date("Y-m-d");
     $hora = date("H:i:s");
@@ -19,17 +18,32 @@ if (isset($_SESSION['username'])) {
     if (!$pagina) {
         $inicio = 0;
         $pagina = 1;
-    }
-    else {
+    } else {
         $inicio = ($pagina - 1) * $registros;
     }
 
-    ?>
+?>
 <html>
     <head>
     <head>
-        <link rel="shortcut icon" href="http://cx6cau.urugate.com/favicon.ico" />
+        <link rel="shortcut icon" href="favicon.ico" />
         <link href="style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type='text/javascript' src='js/jquery.autocomplete.js'></script>
+        <script type="text/javascript">
+            $().ready(function() {
+                    $("#short_name").autocomplete("get_country_list.php", {
+                        width: 260,
+                        matchContains: true,
+                        //mustMatch: true,
+                        //minChars: 0,
+                        //multiple: true,
+                        //highlight: false,
+                        //multipleSeparator: ",",
+                        selectFirst: false
+                    });
+            });
+        </script>
         <title><? print $callsign ?> Logbook</title>
         <h1 style="text-align:center"><? print $callsign ?> Logbook</h1>
     </head>
@@ -45,7 +59,7 @@ if (isset($_SESSION['username'])) {
             <tr class=cabezal> <td><b>Indicativo</b></td><td><b>Operador</b></td><td><b>Ubicacion/Pais</b></td><td><b>Fecha</b></td><td><b>Hora&nbsp;(UTC)</b></td><td><b>Modo</b></td><td><b>Banda</b></td><td><b>Frecuencia</b></td><td><b>RST RX</b></td><td><b>RST TX</b></td><td><b>QSL enviada</b></td><td><b>QSL recibida</b></td></tr>
             <tr bgcolor="#bbcccc"><td><input name="indicativo" type="text" size="8"/> </td>
                 <td><input name="operador" type="text" size="15"/> </td>
-                <td><input name="ubicacion" type="text" size="15"/> </td>
+                <td><input name="ubicacion" type="text" id="short_name"/></td>
                 <td><input name="fecha" type="text" size="10" value="<? echo $hoy ?>"/> </td>
                 <td><input name="hora" type="text" size="6" value="<? echo $hora ?>" /> </td>
                 <td>
@@ -53,7 +67,7 @@ if (isset($_SESSION['username'])) {
                         <option value="SSB">SSB</option>
                         <option value="FM">FM</option>
                         <option value="AM">AM</option>
-			<option value="EchoLik">EchoL</option>
+			<option value="EchoLink">EchoL</option>
                     </select>
                 </td>
                 <td>
@@ -92,7 +106,7 @@ if (isset($_SESSION['username'])) {
         <input type="submit" name="submit" value="Agregar"/>
     </form>
         <?php
-        include "db.php";
+        include "config.php";
         $mode=$_GET["mode"];
         if($mode=="add") {
             $indicativo=$_POST["indicativo"];
@@ -133,7 +147,7 @@ if (isset($_SESSION['username'])) {
             <td>
                     <?php
 // Necesito el include db para que cuando agregue un contacto me muestre la grafica correctamente
-                    include "db.php";
+                    include "config.php";
 //Hago la grafica
                     include('graphs.inc.php');
 
@@ -195,7 +209,7 @@ if (isset($_SESSION['username'])) {
             </td></tr></table>
 
         <?php
-        include "db.php";
+        include "config.php";
         $var = @$_GET['q'] ;
         $var = strtoupper($var); //paso a mayuscula
         $trimmed = trim($var);  //saco los espacios en blanco

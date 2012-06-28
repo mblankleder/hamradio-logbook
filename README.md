@@ -11,9 +11,14 @@ Install
 -------
 
 1 - Create the database:
-mysql> create database logbook;
+    mysql> create database logbook;
 
-2 - Create the tables using the "create_tables" script under the install directory.
+2 - Create the tables using the "create_tables" and script under the install directory.
 
-3 - Configure the db.php and owner_config.php files according with your needs.
+3 - Create and populate the countries table:
+    mysql -u[user] -p[password] logbook < install/countries.sql
+
+4 - Copy all the files to you Apache document root or wherever you've configured your webserver
+
+5 - Configure config.php files according to your needs.
  

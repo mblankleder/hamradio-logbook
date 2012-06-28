@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['username'])) {
     $boton=$_POST["boton"];
-    include "db.php";
+    include "config.php";
     switch ($boton) {
         case "Cancelar":
             header ("Location: logbook.php");

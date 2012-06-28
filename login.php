@@ -1,5 +1,5 @@
 <?PHP
-include "db.php";
+include "config.php";
 //check that the user is calling the page from the login form and not accessing it directly
 //and redirect back to the login form if necessary
 if (!isset($_POST['username']) || !isset($_POST['password'])) {

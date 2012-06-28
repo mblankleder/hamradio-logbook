@@ -1,19 +1,34 @@
 <?php
 session_start();
 if (isset($_SESSION['username'])) {
-    require 'owner_config.php';
-    include "db.php";
+    include "config.php";
     $id=$_GET["id"];
     $sql = mysql_query("SELECT id,indicativo, operador, ubicacion, DATE_FORMAT(fecha_hora , '%Y-%m-%d') as fecha, DATE_FORMAT(fecha_hora , '%H:%i:%s') as hora, modo, banda, frecuencia, rst_rx, rst_tx, qsl_env, qsl_rec, qsl_info, comentarios FROM qso where id= $id");
     while ($row = mysql_fetch_array($sql)) {
         ?>
 <html>
     <head>
-        <link rel="shortcut icon" href="http://cx6cau.urugate.com/favicon.ico" />
+        <link rel="shortcut icon" href="favicon.ico" />
         <link href="style.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="js/jquery.js"></script>
+        <script type='text/javascript' src='js/jquery.autocomplete.js'></script>
+        <script type="text/javascript">
+                $().ready(function() {
+                        $("#short_name").autocomplete("get_country_list.php", {
+                                width: 260,
+                                matchContains: true,
+                                //mustMatch: true,
+                                //minChars: 0,
+                                //multiple: true,
+                                //highlight: false,
+                                //multipleSeparator: ",",
+                                selectFirst: false
+                        });
+                });
+        </script>
         <title><? print $callsign ?> Logbook</title>
-    <h1 style="text-align:center">Modificar contacto
     </head>
+    <h1 style="text-align:center">Modificar contacto</h1>        
     <hr>
     <br />
     <body>
@@ -24,7 +39,7 @@ if (isset($_SESSION['username'])) {
                 <tr class=cabezal><td><b>Indicativo</b></td><td><b>Operador</b></td><td><b>Ubicacion/Pais</b></td><td><b>Fecha</b></td><td><b>Hora&nbsp;(UTC)</b></td><td><b>Modo</b></td><td><b>Banda</b></td><td><b>Frecuencia</b></td><td><b>RST RX</b></td><td><b>RST TX</b></td><td><b>QSL enviada</b></td><td><b>QSL recibida</b></td></tr>
                 <tr bgcolor="#bbcccc"><td><input name="indicativo" type="text" size="8" value= "<? echo $row['indicativo']; ?> "/> </td>
                     <td><input name="operador" type="text" size="15" value= "<? echo $row['operador']; ?> "/> </td>
-                    <td><input name="ubicacion" type="text" size="15" value= "<? echo $row['ubicacion']; ?> "/> </td>
+                    <td><input name="ubicacion" type="text" value= "<? echo $row['ubicacion']; ?> " id="short_name" /> </td>
                     <td><input name="fecha" type="text" size="8"value= "<? echo $row['fecha']; ?> "> </td>
                     <td><input name="hora" type="text" size="8" value= "<? echo $row['hora']; ?> "/> </td>
                     <td>

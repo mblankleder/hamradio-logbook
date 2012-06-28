@@ -38,7 +38,7 @@ else {
 
 <?php
 // Necesito el include db para que cuando agregue un contacto me muestre la grafica correctamente
-include "db.php";
+include "config.php";
         $var = @$_GET['q'] ;
         $var = strtoupper($var); //paso a mayuscula
         $trimmed = trim($var);  //saco los espacios en blanco

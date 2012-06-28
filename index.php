@@ -1,6 +1,5 @@
 <?php
-include 'db.php';
-require 'owner_config.php';
+include 'config.php';
 ?>
 <html>
     <head>
@@ -23,7 +22,7 @@ require 'owner_config.php';
                     <td>Password:</td><td><input type="password" name="password" size="20"></td>
                 </tr>
                 <tr>
-                    <td colspan=2><input type="submit" value="Login"></td>
+                    <td colspan="2" align="right"><input type="submit" value="Login"></td>
                 </tr>
             </table>
     </fieldset>
@@ -50,7 +49,7 @@ if($_POST['palabra'] == "") {
                 <table align=center cellpadding=5>
                     <tr class=cabezal>
                         <td><b>Callsign</b></td><td><b>Name</b></td>
-                        <td><b>Date</b></td><td><b>CX Time (-3 UTC)</b></td>
+                        <td><b>Date</b></td><td><b>UTC</b></td>
                         <td><b>Freq (Mhz)</b></td><td><b>RST</b></td>
                     </tr>';
             $row_color="1";
