@@ -11,7 +11,7 @@ include 'config.php';
     <h2>Logbook</h2>
 </center>
 <body>
-<form method="POST" action="login.php">
+<form method="post" action="login.php">
     <fieldset>
         <legend>Login</legend>
             <table>
@@ -28,20 +28,20 @@ include 'config.php';
     </fieldset>
 </form>
 
-<form name="buscador" method="post" action="index.php">
+<form name="quickSearch" method="post" action="index.php">
     <fieldset>
-        <legend>Search</legend>
-            Callsign:<input type="text" name="palabra">
+        <legend>Quick Search</legend>
+            Callsign:<input type="text" name="searchString">
             <input type="submit" value="Search" name="enviar">
 <?
-if (!isset($_POST['palabra']))  {
-    $_POST['palabra'] = ""; 
+if (!isset($_POST['searchString']))  {
+    $_POST['searchString'] = ""; 
 }
-if($_POST['palabra'] == "") {
+if($_POST['searchString'] == "") {
     echo "<br /><div align=center>Enter a callsign to start the search</div>";
 }else{
      if(isset($_POST['enviar'])) {
-        $query = "SELECT indicativo, operador, DATE_FORMAT(fecha_hora , '%Y-%m-%d') as fecha, DATE_FORMAT(fecha_hora , '%H:%i') as hora, modo, banda, frecuencia, rst_rx from qso WHERE indicativo LIKE '%{$_POST['palabra']}%'";
+        $query = "SELECT indicativo, operador, DATE_FORMAT(fecha_hora , '%Y-%m-%d') as fecha, DATE_FORMAT(fecha_hora , '%H:%i') as hora, modo, banda, frecuencia, rst_rx from qso WHERE indicativo LIKE '%{$_POST['searchString']}%'";
         $result = mysql_query($query,$dbh);
         $num_results = mysql_num_rows($result);
         if ($num_results > 0){

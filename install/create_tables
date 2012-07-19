@@ -23,7 +23,20 @@ CREATE TABLE `users` (
   PRIMARY KEY  (`user_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
-CREATE table modo (id int(11) NOT NULL auto_increment, modo varchar(15) NOT NULL default '', PRIMARY KEY (id)) TYPE=MyISAM;
+CREATE TABLE `bands` (
+  `id` int(11) NOT NULL auto_increment,
+  `band` varchar(15) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1 
+
+CREATE TABLE `modes` (
+  `id` int(11) NOT NULL auto_increment,
+  `mode` varchar(10) NOT NULL default '',
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1
+
+# need to add more modes
+INSERT INTO `modes` VALUES (1,'SSB'),(2,'AM'),(3,'FM'),(4,'CW'),(5,'EchoLink');
 
 # change the username and the password
 INSERT INTO users VALUES (NULL,'username',MD5('yourpassword') );

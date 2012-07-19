@@ -64,10 +64,13 @@ if (isset($_SESSION['username'])) {
                 <td><input name="hora" type="text" size="6" value="<? echo $hora ?>" /> </td>
                 <td>
                     <select name="modo">
-                        <option value="SSB">SSB</option>
-                        <option value="FM">FM</option>
-                        <option value="AM">AM</option>
-			<option value="EchoLink">EchoL</option>
+                    <?
+                    require("functions.php");
+                    $ci = loadCombo("modes", "mode");
+                    while($data = mysql_fetch_array($ci)) {
+                        echo "<option value=\"$data[mode]\">$data[mode]</option>";
+                    } 
+                    ?>
                     </select>
                 </td>
                 <td>
@@ -78,7 +81,7 @@ if (isset($_SESSION['username'])) {
                         <option value="20m">20m</option>
                         <option value="40m">40m</option>
                         <option value="80m">80m</option>
-			<option value="Net">Net</option>
+			            <option value="Net">Net</option>
                     </select>
                 </td>
                 <td><input name="frecuencia" type="text" size="6"/>MHz</td>
