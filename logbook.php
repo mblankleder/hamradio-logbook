@@ -25,11 +25,10 @@ if (isset($_SESSION['username'])) {
 ?>
 <html>
     <head>
-    <head>
         <link rel="shortcut icon" href="favicon.ico" />
         <link href="style.css" rel="stylesheet" type="text/css" />
         <script type="text/javascript" src="js/jquery.js"></script>
-        <script type='text/javascript' src='js/jquery.autocomplete.js'></script>
+        <script type="text/javascript" src="js/jquery.autocomplete.js"></script>
         <script type="text/javascript">
             $().ready(function() {
                     $("#short_name").autocomplete("get_country_list.php", {

@@ -1,7 +1,7 @@
 hamradio-logbook
 ================
 
-Ultra simple ham radio logbook
+Basic ham radio logbook
 
 For log my contacts, I made my own logbook. 
 It's writen in PHP and uses a MySQL database. 
