@@ -1,19 +1,19 @@
 CREATE TABLE `qso` (
-  `id` int(11) NOT NULL auto_increment,
-  `indicativo` varchar(15) NOT NULL default '',
-  `operador` varchar(20) default '',
-  `ubicacion` varchar(30) default NULL,
-  `fecha_hora` datetime default NULL,
-  `modo` varchar(5) NOT NULL default '',
-  `banda` varchar(10) NOT NULL default '',
-  `frecuencia` varchar(15) NOT NULL default '',
-  `rst_rx` varchar(5) default '',
-  `rst_tx` varchar(5) default '',
-  `qsl_env` tinyint(1) default '0',
-  `qsl_rec` tinyint(1) default '0',
-  `qsl_info` varchar(100) default '',
-  `comentarios` varchar(200) default '',
-  PRIMARY KEY  (`id`)
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `station` varchar(8) DEFAULT NULL,
+  `operator` varchar(15) DEFAULT NULL,
+  `location` varchar(30) DEFAULT NULL,
+  `date_startTime` datetime DEFAULT NULL,
+  `mode` varchar(5) DEFAULT NULL,
+  `band` varchar(10) DEFAULT NULL,
+  `frequency` varchar(15) DEFAULT NULL,
+  `rst_rx` varchar(5) DEFAULT '',
+  `rst_tx` varchar(5) DEFAULT '',
+  `qsl_snt` tinyint(1) DEFAULT NULL,
+  `qsl_rec` tinyint(1) DEFAULT '0',
+  `qsl_info` varchar(100) DEFAULT '',
+  `remarks` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `users` (
@@ -27,13 +27,13 @@ CREATE TABLE `bands` (
   `id` int(11) NOT NULL auto_increment,
   `band` varchar(15) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1 
+) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=latin1; 
 
 CREATE TABLE `modes` (
   `id` int(11) NOT NULL auto_increment,
   `mode` varchar(10) NOT NULL default '',
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 # need to add more modes
 INSERT INTO `modes` VALUES (1,'SSB'),(2,'AM'),(3,'FM'),(4,'CW'),(5,'EchoLink');
