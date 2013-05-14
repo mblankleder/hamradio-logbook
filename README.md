@@ -27,6 +27,7 @@ Install
 6 - Configure config.php files according to your needs.
 
 TODO
+- Sanitize user input in SQL queries using something similar to mysqli.real-escape-string
 - Fix update on search edit edit.
 - A better installer.
 - Stats.
