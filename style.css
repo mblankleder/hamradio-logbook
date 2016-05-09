@@ -1,5 +1,6 @@
 body {
-    background-color: white;
+    background: #777;
+	//background: url(img/bg12345.png) repeat-x;
 }
 
 h1 {
@@ -9,25 +10,39 @@ h1 {
 }
 
 h2, h3 {
-    font-family: sans-serif;
+    //font-family: sans-serif;
+	//font-family: Verdana;
+	//font-family: Arial;
+	//font-family: Arial Narrow;
+	//font-family: Calibri;
+	font-family: Century Gothic;
+	//font-family: Tahoma;
     font-weight: normal;
     color: black;
+	//box-shadow: 0px 0px 5px #FFF;
 }
 
-table {
+table, tr, td {
     font-family: sans-serif;
     font-size: 11px;
+	border: 1px solid #777;
 }
 
 tr.header {
     font-family: sans-serif;
     color: white;
     background-color : #306898;
+	//border: 1px solid #000;
 }
 
 fieldset {
     padding: 1em;
     font:80%/1 sans-serif;
+	border: none;
+	//background: url(img/bg12345.png) repeat-x;
+	//background: url(img/toback7.png) repeat;
+	background: #5080A0;
+	box-shadow: 0px 0px 5px 1px #000;
 }
 
 label {
@@ -37,6 +52,17 @@ label {
     padding-top:0.2em;
     text-align:right;
     font-weight:bold;
+}
+legend {
+	font-size: 14px;
+	font-weight: bold;
+	background:  #ccc;
+	padding: 5px;
+	border: 1px solid #AAA;
+	box-shadow: 0px 0px 5px 2px #CCC;
+}
+hr {
+	//box-shadow: 0px 0px 5px 1px #05F;
 }
 
 /* jquery stuff */
@@ -124,4 +150,22 @@ label {
 
 #navigation li a:hover {
     text-decoration:underline;
+}
+#hheader{
+	background: url(img/world-header.jpg) no-repeat;
+	height: 100px;
+}
+.icon{
+	//background: url(img/edit.png) no-repeat;
+	//background: url(img/check.png) no-repeat;
+	//background: #090 url(img/tick-button.png) no-repeat;
+	//background: #090 url(img/save.png) no-repeat;
+	background: #090;
+	color: #FFF;
+	margin-left: 5px;
+	//padding-left:5px;
+	padding-bottom: 3px;
+	border: none;
+	box-shadow: 0px 0px 5px #000;
+	//width: 15px;
 }

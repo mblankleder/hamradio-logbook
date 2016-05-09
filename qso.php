@@ -1,12 +1,14 @@
 <?php
-
 require "config.php";
+echo "<br>";
 require "addQso.php";
+echo "<br>";
 $result = latestQsos();
 $numofrows = mysql_num_rows($result);
+
 echo "
 <fieldset>
-    <legend>Latest $latests_qsos QSOs</legend>
+    <legend>Last $latests_qsos QSO's</legend>
 <table border=\"0\">";
 include "qsoHtmlTableHeader.php";
 // dynamic stuff
@@ -17,19 +19,21 @@ for ($i = 0; $i < $numofrows; $i++) {
     } else {
         echo "<tr bgcolor=\"#f8f9ed\"><td>";
     }
-    echo $row['d'];
+    //echo "<center>" . $row[id] . "</center></td><td>";
+	echo $row['d'];
     echo "</td><td>";
     echo $row['t'];
-    echo "</td><td>";
-    echo $row['t'];
-    echo "</td><td>";
+    echo "</td><td colspan='2'>";
+    //echo "&nbsp;";
+	//echo $row['t'];
+    //echo "</td><td>";
     echo $row['band'];
     echo "</td><td>";
-    echo $row['frequency'];
+    echo "<p style='text-align:right;'>" . $row['frequency'] . "</p>";
     echo "</td><td>";
     echo $row['mode'];
     echo "</td><td>";
-    echo "100";
+    echo "<p style='text-align:right;'>" . $row['power'] . "w</p>";
     echo "</td><td>";
     echo $row['location'];
     echo "</td><td>";
@@ -47,11 +51,16 @@ for ($i = 0; $i < $numofrows; $i++) {
     echo "</td><td style='width: 200px'>";
     echo $row['qsl_info'];
     echo "</td><td style='width: 200px'>";
-    echo $row['remarks'];
+    if (strlen($row['remarks']) > 50) {
+		echo substr($row['remarks'],0,50) . "&nbsp;<b>...</b>";
+	} else {
+		echo $row['remarks'];
+	}
     echo "</td></tr>";
 }
 echo " 
 </table>
+<BR><BR>
 </fieldset>
 ";
 ?>

@@ -1,23 +1,25 @@
 <?PHP
-
 include "config.php";
 //check that the user is calling the page from the login form and not accessing it directly
 //and redirect back to the login form if necessary
-if (!isset($_POST['username']) || !isset($_POST['password'])) {
-    header("Location: ../index.php");
-}
+
 //check that the form fields are not empty, and redirect back to the login page if they are
-elseif (empty($_POST['username']) || empty($_POST['password'])) {
-    header("Location: ../index.php");
-} else {
 //convert the field values to simple variables
 //add slashes to the username and md5() the password
+
+if (!isset($_POST['username']) || !isset($_POST['password'])) {
+    header("Location: ../index.php");
+} elseif (empty($_POST['username']) || empty($_POST['password'])) {
+    header("Location: ../index.php");
+} else {
     $user = addslashes($_POST['username']);
     $pass = md5($_POST['password']);
 
     $result = mysql_query("select * from users where username='$user' AND password='$pass'", $dbh);
+	
+	//echo "<BR>Login Result=" . $result . " DBH=" . $dbh . "<BR>";
 
-//check that at least one row was returned
+	//check that at least one row was returned
 
     $rowCheck = mysql_num_rows($result);
     if ($rowCheck > 0) {
