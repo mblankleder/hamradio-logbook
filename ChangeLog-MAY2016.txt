@@ -1,0 +1,42 @@
+Modified styling (style.css)
+
+Fixed auto-population of countryTerritory field not working(addQSO)
+- /js/autocomplete.js
+-- remove periods from line  3: $("#countryTerritory").autocomplete("../get_country_list.php", {
+-- remove periods from line 29: xmlhttp.open("GET","../get_freq.php?q="+str,true);
+
+Added auto-population / auto-update of DATE and TIME fields (addQSO.php)
+- added FUNCTION "worldClockZone" and "worldClock"
+
+Added EDIT function (functions.php)
+
+Added DELETE function (deleteQSO.php)
+
+Added PRINT function (printQSO.php)
+
+Modified MENU (menu.html)
+- added LOGBOOK
+- added REFRESH
+
+Modified STATISTICS (stats.php)
+- added total QSO counter
+- added databse size counter
+- added link to GITHUB page
+
+Modified SQL sort order to ID rather than DATE (index.php & functions.php)
+
+Modified CREATE TABLE file in INSTALL directory
+- added missing FREQUENCY field
+- changed MODES field
+
+Added images to IMG directory
+- delete.gif
+- print.png
+- edit.png
+- world-header.jpg
+
+Legacy files NOT being used by program:
+- editar.php
+- guardar.php
+- logbook-new.php
+- logbook.php

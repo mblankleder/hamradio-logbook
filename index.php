@@ -18,7 +18,7 @@ include 'config.php';
         <form method="post" action="login.php">
             <fieldset>
                 <legend>Login</legend>
-                <table>
+                <table style="border: none;">
                     <tr>
                         <td style="color: #FFF;">Username:</td><td><input type="text" name="username" size="20" maxlength="20"></td>
                     </tr>
@@ -45,7 +45,7 @@ include 'config.php';
                     echo "<br /><div align=center style='color: #FFF; float: left;'>Enter a callsign to start the search</div>";
                 } else {
                     if (isset($_POST['searchBtn'])) {
-                        $query = "SELECT station, operator, DATE_FORMAT(date_startTime , '%Y-%m-%d') as d, DATE_FORMAT(date_startTime, '%H:%i') as t, mode, band, frequency, rst_rx from qso WHERE station LIKE '%{$_POST['searchString']}%' order by date_startTime desc";
+                        $query = "SELECT station, operator, DATE_FORMAT(date_startTime , '%Y-%m-%d') as d, DATE_FORMAT(date_startTime, '%H:%i') as t, mode, band, frequency, rst_rx from qso WHERE station LIKE '%{$_POST['searchString']}%' ORDER BY id desc";
                         $result = mysql_query($query, $dbh);
                         $num_results = mysql_num_rows($result);
 						//date/time de  band    freq    mode    grid    op

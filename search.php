@@ -82,11 +82,11 @@ if (empty($m)) {
 				echo $row['remarks'];
 			}
             echo "</td><td>";
-            echo "<a href=\"editQSO.php?mode=edit_$row[id]\"><center><img src=\"img/database_edit.png\" /></center></a>";
+            echo "<a href=\"editQSO.php?mode=edit_$row[id] \"><center><img src=\"img/database_edit.png\" /></center></a>";
 			echo "</td><td>";
-			echo "<a href=\"search.php?mode=print_$row[id]\"><center><img src=\"img/print.png\" /></center></a>";
+			echo "<a href=\"printQSO.php?id=$row[id] \"><center><img src=\"img/print.png\" /></center></a>";
 			echo "</td><td>";
-			echo "<a href=\"search.php?mode=delete_$row[id]\"><center><img src=\"img/delete.gif\" /></center></a>";
+			echo "<a href=\"deleteQSO.php?id=$row[id] \" onClick=\"javascript: return confirm('Are you SURE you want to delete this QSO record?');\"><center><img src=\"img/delete.gif\" /></center></a>";
             echo "</td></tr>";
         }
         echo " 

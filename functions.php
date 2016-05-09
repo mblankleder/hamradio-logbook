@@ -50,32 +50,6 @@ function qsoMode($cmd_recid) {
         $result = mysql_query($sql, $dbh) or die(mysql_error());
         return $result;
     }
-	// DELETE
-	if ($command == "delete") {
-		echo "<script>alert('Are you SURE you want to delete this record?'); return false;</script>";
-		//echo "*<BR>";
-        //$sql = "SELECT id, station, operator, DATE_FORMAT(date_startTime , '%Y-%m-%d') as d, DATE_FORMAT(date_startTime , '%H:%i') as t, mode, band, frequency, location, rst_rx, rst_tx, qsl_snt, qsl_rec, qsl_info, remarks FROM qso WHERE station LIKE '%{$_POST['callSignStr']}%' order by date_startTime desc";
-		$recno = substr($mode,7,strlen($mode));
-		//echo "DELETE FROM `qso` WHERE `id`=$id <BR>";
-		$sql = "DELETE FROM `qso` WHERE `id`=$id";
-        $result = mysql_query($sql, $dbh) or die(mysql_error());
-		echo "<H1>Record deleted.</H1>";
-        break;
-    }
-	// PRINT
-	if ($command == "print") {
-		//echo "*<BR>";
-		$recno = substr($mode,6,strlen($mode));
-		//echo "PRINT FROM `qso` WHERE `id`=$id <BR>";
-		echo "<H1>Print function not operational yet.</H1><!BR>";
-		echo "<H2>";
-		echo "We're working hard on the programming to being you this feature!<BR>";
-		echo "Check for program updates by clicking ";
-		echo "<a href='https://github.com/mblankleder/hamradio-logbook' target='_blank'>HERE</a>";
-		echo "</H2>";
-		echo "<BR><BR><BR>";
-		break;
-	}
 	// EDIT
 	if ($command == "edit") {
     //$regexp = "/^edit_[0-9]/";
@@ -158,6 +132,8 @@ function qsoMode($cmd_recid) {
 		//$result = mysql_query($sql, $dbh) or die(mysql_error());
 		
 		// DATE & TIME need special concentation
+		// Database holds ONE date_time field
+		// Program has TWO fields - date & time
 		//
 		// STATION
 		if ($station != $_POST["station"]) { 
@@ -208,7 +184,7 @@ function qsoMode($cmd_recid) {
 
 function latestQsos() {
     include "config.php";
-    $sql = "SELECT id, station, operator, DATE_FORMAT(date_startTime , '%Y-%m-%d') as d, DATE_FORMAT(date_startTime , '%H:%i') as t, mode, band, power, frequency, location, rst_rx, rst_tx, qsl_snt, qsl_rec, qsl_info, remarks FROM qso ORDER BY d, t DESC LIMIT $latests_qsos";
+    $sql = "SELECT id, station, operator, DATE_FORMAT(date_startTime , '%Y-%m-%d') as d, DATE_FORMAT(date_startTime , '%H:%i') as t, mode, band, power, frequency, location, rst_rx, rst_tx, qsl_snt, qsl_rec, qsl_info, remarks FROM qso ORDER BY id DESC LIMIT $latests_qsos";
     $result = mysql_query($sql, $dbh) or die(mysql_error());
     return $result;
 }

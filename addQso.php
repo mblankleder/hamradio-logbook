@@ -34,7 +34,6 @@ if (day < 10) {
 }
 
 return year + "-" + month + "-" + day + " " + hr + ":" + min;
-//return monthArray[month] + " " + day + ", " + year + "<br>" + hr + " hours"
 }
 
 function worldClockZone(){
@@ -60,7 +59,6 @@ $stime = date("H:i");
 echo "
 <fieldset>
     <legend>Add QSO</legend>
-	<span id=\"GMTData\">GMT=</span>
 <form action=\"main.php?mode=add\" method=\"post\">
 <table border=\"0\">
     <tr class=\"header\">
