@@ -1,3 +1,58 @@
+<script language="JavaScript">
+<!--
+function worldClock(){
+var time = new Date()
+var gmtMS = time.getTime() + (time.getTimezoneOffset() * 60000)
+var gmtTime = new Date(gmtMS)
+var day = gmtTime.getDate();
+// Correct display of MONTH (0 = January)
+var month = gmtTime.getMonth()+1;
+var year = gmtTime.getYear();
+var hr = gmtTime.getHours();
+var min = gmtTime.getMinutes();
+var sec = gmtTime.getSeconds();
+
+if(year < 1000){
+year += 1900;
+}
+
+// Correct to display two digits
+if (hr < 10){
+hr = "0" + hr;
+}
+if (min < 10){
+min = "0" + min;
+}
+if (sec < 10){
+sec = "0" + sec;
+}
+if (month < 10) {
+	month = "0" + month;
+}
+if (day < 10) {
+	day = "0" + day;
+}
+
+return year + "-" + month + "-" + day + " " + hr + ":" + min;
+//return monthArray[month] + " " + day + ", " + year + "<br>" + hr + " hours"
+}
+
+function worldClockZone(){
+var dstr = worldClock();
+var gmt_date = dstr.substring(0, 10);
+var gmt_time = dstr.substring(10, dstr.length);
+
+document.getElementById("GMTD").value = gmt_date
+document.getElementById("GMT").value = gmt_time
+
+setTimeout("worldClockZone()", 1000)
+}
+window.onload=worldClockZone;
+
+//-->
+</script>
+
+
 <?php
 
 $stime = date("H:i");
@@ -5,6 +60,7 @@ $stime = date("H:i");
 echo "
 <fieldset>
     <legend>Add QSO</legend>
+	<span id=\"GMTData\">GMT=</span>
 <form action=\"main.php?mode=add\" method=\"post\">
 <table border=\"0\">
     <tr class=\"header\">
@@ -53,10 +109,10 @@ echo "
     </tr>
     <tr style=\"background-color:#EDF4F8\">
         <td>
-            <input name=\"date\" type=\"text\" size=\"10\" value=\"$today\"/>
+            <input name=\"date\" type=\"text\" size=\"10\" id=\"GMTD\" />
         </td>
         <td colspan=\"2\">
-            <input name=\"timeStart\" type=\"text\" size=\"8\" style=\"text-align: center;\" value=\"$stime\"/>
+			<input name=\"timeStart\" type=\"text\" size=\"8\" style=\"text-align: center;\" id=\"GMT\" />
         </td>
          <td>
             <select name=\"band\" id=\"bandSelect\" onchange=\"setFreq(this.value)\" >";
@@ -91,10 +147,10 @@ echo "</select>
             <input name=\"operator\" type=\"text\" maxlength=\"15\" />
         </td>
         <td>
-            <input name=\"rst_rx\" type=\"text\" maxlength=\"3\" size=\"3\" />
+            <input name=\"rst_rx\" type=\"text\" maxlength=\"3\" size=\"3\" value=\"59\" />
         </td>
         <td>
-            <input name=\"rst_tx\" type=\"text\" maxlength=\"3\" size=\"3\" />
+            <input name=\"rst_tx\" type=\"text\" maxlength=\"3\" size=\"3\" value=\"59\" />
         </td>
 </tr>
 </table>
@@ -141,7 +197,7 @@ echo "</select>
     </tr>
 </table>
 <br />
-<input type=\"submit\" name=\"submit\" value=\"&nbsp;&nbsp;&nbsp;Save to DB\" class=\"icon\" title=\"SAVE\" />
+<input type=\"submit\" name=\"submit\" value=\"Save to DB\" class=\"icon\" title=\"SAVE\" />
 </form>
 </fieldset>
 "
