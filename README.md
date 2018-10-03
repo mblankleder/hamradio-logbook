@@ -1,3 +1,12 @@
+BIG FAT WARNING
+===============
+
+I don't maintain this code anymore. It has many security flaws.
+
+I left it here just in case someone finds it useful.
+
+Use it at your own risk.
+
 hamradio-logbook
 ================
 
